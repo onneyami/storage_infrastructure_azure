@@ -4,7 +4,7 @@ output "resource_group_name" {
 }
 
 # Output the URL of the uploaded blob
-output "test_blob_url" {
-  description = "The public URL of the uploaded test blob"
-  value       = azurerm_storage_blob.test_upload.url
-}
+#output "test_blob_url" {
+#  description = "The public URL of the uploaded test blob"
+#  value       = azurerm_storage_blob.test_upload.url
+#}

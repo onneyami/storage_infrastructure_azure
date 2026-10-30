@@ -32,10 +32,10 @@ resource "azurerm_storage_container" "public_container" {
 }
 
 # Upload a test file
-resource "azurerm_storage_blob" "test_upload" {
-  name                   = "hello-world.txt"
-  storage_account_name   = azurerm_storage_account.public_sa.name
-  storage_container_name = azurerm_storage_container.public_container.name
-  type                   = "Block"
-  source_content         = "Hello, this is a test file for the public website!"
-}
+#resource "azurerm_storage_blob" "test_upload" {
+#  name                   = "hello-world.txt"
+#  storage_account_name   = azurerm_storage_account.public_sa.name
+#  storage_container_name = azurerm_storage_container.public_container.name
+#  type                   = "Block"
+#  source_content         = "Hello, this is a test file for the public website!"
+#}
