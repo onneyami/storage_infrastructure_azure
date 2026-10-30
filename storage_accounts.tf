@@ -1,7 +1,7 @@
 resource "azurerm_storage_account" "training_sa" {
   name                = "storagetest${random_string.suffix.result}"
-  resource_group_name = azurerm_resource_group.training_rg.name
-  location            = azurerm_resource_group.training_rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+  location            = data.azurerm_resource_group.rg.location
 
   # Basic Settings
   account_tier             = "Standard"
