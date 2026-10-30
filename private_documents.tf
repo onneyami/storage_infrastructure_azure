@@ -15,7 +15,7 @@ resource "azurerm_storage_account" "private_sa" {
 
   blob_properties {
     # Versioning is strictly required on the destination account for Object Replication to work
-    versioning_enabled = true
+    versioning_enabled  = true
     change_feed_enabled = true
   }
 }

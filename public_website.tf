@@ -16,7 +16,7 @@ resource "azurerm_storage_account" "public_sa" {
   allow_nested_items_to_be_public = true
 
   blob_properties {
-    versioning_enabled = true
+    versioning_enabled  = true
     change_feed_enabled = true
 
     delete_retention_policy {
