@@ -11,15 +11,15 @@ resource "azurerm_storage_account" "public_sa" {
   resource_group_name      = data.azurerm_resource_group.rg.name
   location                 = data.azurerm_resource_group.rg.location
   account_tier             = "Standard"
-  account_replication_type = "RAGRS" 
+  account_replication_type = "RAGRS"
 
-  allow_nested_items_to_be_public = true 
+  allow_nested_items_to_be_public = true
 
   blob_properties {
-    versioning_enabled = true 
+    versioning_enabled = true
 
     delete_retention_policy {
-      days = 21 
+      days = 21
     }
   }
 }
@@ -28,7 +28,7 @@ resource "azurerm_storage_account" "public_sa" {
 resource "azurerm_storage_container" "public_container" {
   name                  = "public"
   storage_account_name  = azurerm_storage_account.public_sa.name
-  container_access_type = "blob" 
+  container_access_type = "blob"
 }
 
 # Upload a test file
