@@ -16,12 +16,12 @@ resource "azurerm_user_assigned_identity" "app_mi" {
 
 # 3. Create the Storage Account with Infrastructure Encryption Enabled
 resource "azurerm_storage_account" "app_sa" {
-  name                              = "secureapp${random_string.app_suffix.result}"
-  resource_group_name               = data.azurerm_resource_group.rg.name
-  location                          = data.azurerm_resource_group.rg.location
-  account_tier                      = "Standard"
-  account_replication_type          = "LRS"
-  
+  name                     = "secureapp${random_string.app_suffix.result}"
+  resource_group_name      = data.azurerm_resource_group.rg.name
+  location                 = data.azurerm_resource_group.rg.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+
   # Enable infrastructure encryption (cannot be changed after creation)
   infrastructure_encryption_enabled = true
 
@@ -40,12 +40,12 @@ resource "azurerm_role_assignment" "mi_storage_reader" {
 
 # 5. Create the Key Vault with Purge Protection and RBAC authorization
 resource "azurerm_key_vault" "kv" {
-  name                      = "appkv${random_string.app_suffix.result}"
-  location                  = data.azurerm_resource_group.rg.location
-  resource_group_name       = data.azurerm_resource_group.rg.name
-  tenant_id                 = data.azurerm_client_config.current.tenant_id
-  sku_name                  = "standard"
-  
+  name                = "appkv${random_string.app_suffix.result}"
+  location            = data.azurerm_resource_group.rg.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+  tenant_id           = data.azurerm_client_config.current.tenant_id
+  sku_name            = "standard"
+
   enable_rbac_authorization = true
   purge_protection_enabled  = true
 }
@@ -83,7 +83,7 @@ resource "azurerm_key_vault_key" "cmk" {
   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 
   # Do not create the key until the 90-second RBAC delay finishes
-  depends_on = [time_sleep.wait_for_rbac] 
+  depends_on = [time_sleep.wait_for_rbac]
 }
 
 # 10. Link the Customer Managed Key to the Storage Account
