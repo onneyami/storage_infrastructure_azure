@@ -39,9 +39,3 @@ resource "azurerm_storage_blob" "test_upload" {
   type                   = "Block"
   source_content         = "Hello, this is a test file for the public website!"
 }
-
-# Output the URL of the uploaded blob
-output "test_blob_url" {
-  description = "The public URL of the uploaded test blob"
-  value       = azurerm_storage_blob.test_upload.url
-}
