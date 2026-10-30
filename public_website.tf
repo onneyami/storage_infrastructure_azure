@@ -17,6 +17,7 @@ resource "azurerm_storage_account" "public_sa" {
 
   blob_properties {
     versioning_enabled = true
+    change_feed_enabled = true
 
     delete_retention_policy {
       days = 21
